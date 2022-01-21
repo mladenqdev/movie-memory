@@ -3,12 +3,12 @@ import './App.css';
 import SingleCard from './components/SingleCard';
 
 const cardImages = [
-	{ src: '/img/matrix.jpg' },
-	{ src: '/img/25th-hour.jpg' },
-	{ src: '/img/dragon-tattoo.jpg' },
-	{ src: '/img/fight-club.jpg' },
-	{ src: '/img/in-bruges.jpg' },
-	{ src: '/img/lord-of-the-rings.jpg' },
+	{ src: '/img/matrix.jpg', matched: false },
+	{ src: '/img/25th-hour.jpg', matched: false },
+	{ src: '/img/dragon-tattoo.jpg', matched: false },
+	{ src: '/img/fight-club.jpg', matched: false },
+	{ src: '/img/in-bruges.jpg', matched: false },
+	{ src: '/img/lord-of-the-rings.jpg', matched: false },
 ];
 
 function App() {
@@ -34,14 +34,23 @@ function App() {
 	useEffect(() => {
 		if (choiceOne && choiceTwo) {
 			if (choiceOne.src === choiceTwo.src) {
-				console.log('match');
+				setCards((prevCards) => {
+					return prevCards.map((card) => {
+						if (card.src === choiceOne.src) {
+							return { ...card, matched: true };
+						} else {
+							return card;
+						}
+					});
+				});
 				resetTurn();
 			} else {
-				console.log('dont match');
-				resetTurn();
+				setTimeout(() => resetTurn(), 1000);
 			}
 		}
 	}, [choiceOne, choiceTwo]);
+
+	console.log(cards);
 
 	const resetTurn = () => {
 		setChoiceOne(null);
@@ -60,6 +69,11 @@ function App() {
 						key={card.id}
 						card={card}
 						handleChoice={handleChoice}
+						flipped={
+							card === choiceOne ||
+							card === choiceTwo ||
+							card.matched
+						}
 					/>
 				))}
 			</div>
