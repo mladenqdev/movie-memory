@@ -1,6 +1,8 @@
 .card {
 	position: relative;
 	cursor: pointer;
+	margin: 0 10px 10px;
+	width: 160px;
 }
 
 .card img {
