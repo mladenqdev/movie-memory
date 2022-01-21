@@ -9,7 +9,7 @@ const cardImages = [
 	{ src: '/img/fight-club.jpg', matched: false },
 	{ src: '/img/in-bruges.jpg', matched: false },
 	{ src: '/img/lord-of-the-rings.jpg', matched: false },
-	{ src: '/img/enemy.jpg', matched: false },
+	{ src: '/img/chef.jpg', matched: false },
 	{ src: '/img/machinist.jpg', matched: false },
 	{ src: '/img/walter-mitty.jpg', matched: false },
 	{ src: '/img/into-the-wild.jpg', matched: false },
